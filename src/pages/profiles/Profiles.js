@@ -5,19 +5,27 @@ import { StatusBar } from 'expo-status-bar';
 export default function Home({navigation}) {
     return (
       <View style={styles.container}>
-            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Angelo')}>
+            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile', {
+                Nome: 'Ângelo', Idade: '19 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../../assets/maromba.jpg'
+                })}>
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Angelo</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.ident1} /* onPress={() => navigation.navigate('Angelo')} */>
+            <TouchableOpacity style={styles.ident1}  onPress={() => navigation.navigate('Profile', {
+                Nome: 'Gabriela', Idade: '17 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../../assets/maromba.jpg'   
+                })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Gabriela</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.ident1} /* onPress={() => navigation.navigate('Angelo')} */>
+            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile',  {
+                Nome: 'Samuel', Idade: '19 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../../assets/maromba.jpg'  
+                })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Samuel</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.ident1} /* onPress={() => navigation.navigate('Angelo')} */>
+            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile', {
+                Nome: 'Vinicius', Idade: '18 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../../assets/maromba.jpg'    
+                })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Vinicius</Text>
             </TouchableOpacity>
             
