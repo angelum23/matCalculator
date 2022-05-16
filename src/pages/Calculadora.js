@@ -1,21 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity, BackHandler } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { TextInput } from "react-native-gesture-handler";
 
-export default function Home({navigation}) {
-    return (
+export default function Calculadora(){
+    return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Calculadora')}>
-                {/* <Calc name="calc" size={30} color="black"></Calc> */}
-                <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Calculadora</Text>
-            </TouchableOpacity>
+            <View style={{flex:1}}></View>
 
-            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profiles')}>
-                {/* <Calc name="calc" size={30} color="black"></Calc> */}
-                <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Perfil</Text>
-            </TouchableOpacity>
+            <View style={styles.ident1}>
+                <TextInput
+                    style={styles.textInput}
+                    editable
+                    maxLength={30}
+                />
+                <Button></Button>
+                <View style={{flex:1}}></View>
+            </View>
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -27,7 +29,18 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         paddingTop: 40,
     },
-  
+    textInput: { 
+        marginTop: 30,
+        backgroundColor: 'white', 
+        borderRadius: 50, 
+        padding: 15, 
+        width: 330,
+        multiline: false
+    },
+    button: {
+        width: 50,
+        height: 20
+    },
     ident1: {
         display: 'flex',
         justifyContent: 'center',
@@ -35,8 +48,8 @@ const styles = StyleSheet.create({
         backgroundColor:'lightgray',
         shadowColor: 'black',
         borderRadius: 10,
-        width: 250,
-        height: 150,
+        width: 380,
+        height: 400,
         shadowOpacity: 0.2,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},

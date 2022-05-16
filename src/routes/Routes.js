@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../pages/Home';
-import Calc from '../pages/Calc';
+import Calculadora from '../pages/Calculadora';
 import Profiles from '../pages/profiles/Profiles';
 import Profile from '../pages/profiles/Profile';
 
@@ -15,7 +15,7 @@ export function Routes() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Calc" component={Calc} />
+                <Stack.Screen name="Calculadora" component={Calculadora} />
                 <Stack.Screen name="Profiles" component={Profiles} />
                 <Stack.Screen name="Profile" component={Profile} />
             </Stack.Navigator>
