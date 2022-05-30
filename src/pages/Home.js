@@ -2,17 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity, BackHandler } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-// import user from 'react-native-vector-icons/FontAwesome';
-// user.loadFont();
-// import mdiCalculator from '@mdi/js';
-// mdiCalculator.loadFont();
-// import mdiChartBellCurveCumulative from '@mdi/js';
-// mdiChartBellCurveCumulative.loadFont();
-
 export default function Home({navigation}) {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Calc')}>
+            <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Calculadora')}>
                 {/* <Calc name="calc" size={30} color="black"></Calc> */}
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Calculadora</Text>
             </TouchableOpacity>

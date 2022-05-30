@@ -8,9 +8,9 @@ export default function Profile({ route, navigation }) {
         <View style={styles.container}>
 
             {/* <Image
-                style={[styles.image]}
-                source={require({Foto})}>
-            </Image>  */}
+                style={styles.image}
+                source={require({Foto})}
+            /> */}
             <Text style={[styles.headline]}>{"\n"}{Nome}</Text>
             <Text style={[styles.headline]}>{Idade}</Text>
             <Text style={[styles.headline]}>{Curso}{"\n"} </Text>
