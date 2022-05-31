@@ -20,19 +20,20 @@ export default function Calculadora(){
     }
 
     function executaMaisMenos(key){
-        let novoValor = input;
-
-        novoValor += + key.toString();
-
-        setInput(novoValor)
     }
 
-    function executaIgual(key){
-        let novoValor = input;
+    function executaEnviar(key){
+    }
 
-        novoValor += + key.toString();
+    function executaApagar(){
+        let _input = input;
 
-        setInput(novoValor)
+        _input = _input.slice(0,-1)
+
+        setInput(_input);
+    }
+    function executaApagarTudo(){
+        setInput("")
     }
 
     return(
@@ -71,8 +72,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>3</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique("/")}>
-                    <Text style={styles.buttonText}>/</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaApagarTudo("")}>
+                    <Text style={styles.buttonText}>CE</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -89,8 +90,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>6</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique("*")}>
-                    <Text style={styles.buttonText}>*</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaApagar("")}>
+                    <Text style={styles.buttonText}>C</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -107,26 +108,26 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>9</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique("-")}>
-                    <Text style={styles.buttonText}>-</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("/")}>
+                    <Text style={styles.buttonText}>/</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={{flexDirection: "row"}}>
-                    <TouchableOpacity style={styles.button} onPress={() => executaMaisMenos(1)}>
-                    <Text style={styles.buttonText}>+/-</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("(")}>
+                    <Text style={styles.buttonText}>(</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique(",")}>
-                    <Text style={styles.buttonText}>,</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique(")")}>
+                    <Text style={styles.buttonText}>)</Text>
                     </TouchableOpacity>
                     
                     <TouchableOpacity style={styles.button} onPress={() => executaClique(0)}>
                     <Text style={styles.buttonText}>0</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique("+")}>
-                    <Text style={styles.buttonText}>+</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("*")}>
+                    <Text style={styles.buttonText}>*</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -135,16 +136,26 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>x</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique("(")}>
-                    <Text style={styles.buttonText}>(</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique(",")}>
+                    <Text style={styles.buttonText}>,</Text>
                     </TouchableOpacity>
                     
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique(")")}>
-                    <Text style={styles.buttonText}>)</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("=")}>
+                    <Text style={styles.buttonText}>=</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaIgual()}>
-                    <Text style={styles.buttonText}>=</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("-")}>
+                    <Text style={styles.buttonText}>-</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection: "row"}}>
+                    <TouchableOpacity style={styles.buttonEnviar} onPress={() => executaEnviar("x")}>
+                    <Text style={styles.buttonText}>Enviar</Text>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique("+")}>
+                    <Text style={styles.buttonText}>+</Text>
                     </TouchableOpacity>
                 </View>
                 
@@ -166,22 +177,36 @@ const styles = StyleSheet.create({
         paddingTop: 40,
     },
     textInput: { 
-        marginTop: 30,
-        marginBottom: 20,
-        backgroundColor: 'white', 
+        marginTop: 10,
+        marginBottom: 5,
+        backgroundColor: '#b2b6ce', 
         borderRadius: 50, 
         padding: 15, 
         width: 330,
         multiline: false
     },
     button: {
-        margin: 4,
-        width: 84,
+        margin: 3,
+        marginTop: 2,
+        marginBottom: 3,
+        width: 88,
         height: 50,
-        backgroundColor: 'white',
+        backgroundColor: '#b2b6ce',
         borderRadius: 15,
         justifyContent: 'center'
     },
+
+    buttonEnviar: {
+        margin: 3,
+        marginTop: 2,
+        marginBottom: 3,
+        width: 274,
+        height: 50,
+        backgroundColor: '#b2b6ce',
+        borderRadius: 15,
+        justifyContent: 'center'
+    },
+
     buttonText: {
         justifyContent: 'center',
         textAlign: "center",
@@ -193,7 +218,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#aaaaaa',
+        backgroundColor:'#646381',
         shadowColor: 'black',
         borderRadius: 10,
         width: 380,

@@ -12,7 +12,10 @@ const Stack = createNativeStackNavigator();
 
 export function Routes() {
     return(
-        <NavigationContainer>
+        <NavigationContainer theme={{colors: {background: 'rgb(100, 99, 129)',
+                                              primary: 'rgb(100, 99, 129)',
+                                              border: 'rgb(100, 99, 129)',
+                                              card: 'rgb(100, 99, 129)'}}}>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Calculadora" component={Calculadora} />
