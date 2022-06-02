@@ -59,7 +59,7 @@ export default function Calculadora(){
                     maxLength={30}
                 />
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.button}  onPress={() => executaClique(1)} >
                     <Text style={styles.buttonText}>1</Text>
                     </TouchableOpacity>
@@ -77,7 +77,7 @@ export default function Calculadora(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.button} onPress={() => executaClique(4)}>
                     <Text style={styles.buttonText}>4</Text>
                     </TouchableOpacity>
@@ -95,7 +95,7 @@ export default function Calculadora(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.button} onPress={() => executaClique(7)}>
                     <Text style={styles.buttonText}>7</Text>
                     </TouchableOpacity>
@@ -113,7 +113,7 @@ export default function Calculadora(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.button} onPress={() => executaClique("(")}>
                     <Text style={styles.buttonText}>(</Text>
                     </TouchableOpacity>
@@ -131,7 +131,7 @@ export default function Calculadora(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.button} onPress={() => executaClique("x")}>
                     <Text style={styles.buttonText}>x</Text>
                     </TouchableOpacity>
@@ -149,7 +149,7 @@ export default function Calculadora(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flexDirection: "row"}}>
+                <View style={styles.linha}>
                     <TouchableOpacity style={styles.buttonEnviar} onPress={() => executaEnviar("x")}>
                     <Text style={styles.buttonText}>Enviar</Text>
                     </TouchableOpacity>
@@ -169,42 +169,43 @@ export default function Calculadora(){
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#EEEEEE',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: "column",
         paddingTop: 40,
+        marginBottom: -10,
+        flex: 1
     },
     textInput: { 
-        marginTop: 10,
+        marginTop: 20,
         marginBottom: 5,
         backgroundColor: '#b2b6ce', 
         borderRadius: 50, 
         padding: 15, 
-        width: 330,
+        width: '95%',
         multiline: false
     },
     button: {
-        margin: 3,
+        marginRight: 6,
         marginTop: 2,
         marginBottom: 3,
-        width: 88,
         height: 50,
         backgroundColor: '#b2b6ce',
         borderRadius: 15,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '23.5%'
     },
 
     buttonEnviar: {
-        margin: 3,
+        marginRight: 6,
         marginTop: 2,
         marginBottom: 3,
-        width: 274,
+        width: '73.5%',
         height: 50,
         backgroundColor: '#b2b6ce',
         borderRadius: 15,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     buttonText: {
@@ -221,12 +222,17 @@ const styles = StyleSheet.create({
         backgroundColor:'#646381',
         shadowColor: 'black',
         borderRadius: 10,
-        width: 380,
-        height: 400,
+        height: 420,
         shadowOpacity: 0.2,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
         elevation: 5,
         margin: 20,
+        width: '95%'
     },
+
+    linha: {
+        flexDirection: "row",
+        minWidth: '90%'
+    }
 });
