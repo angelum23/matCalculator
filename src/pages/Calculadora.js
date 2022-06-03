@@ -5,6 +5,7 @@ import { LineChart, Grid } from "react-native-svg-charts";
 
 
 export default function Calculadora(){
+    const dados = [80, 10, 95, 48, 24, 67, 51, 12, 33, 0, 24, 20, 50]
     const [input, setInput] = useState(""); //valores bind
     const [operacao, setOperacao] = useState("");
 
@@ -40,11 +41,14 @@ export default function Calculadora(){
         <View style={styles.container}>
             <View style={{flex:1}}>
                 <LineChart
-                    style={{ height: 200 }}
-                    data={[50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]}
+                    style={{ height: 380,
+                             width: 300,
+                             backgroundColor: '#EEEEEE'}}
+                    gridMin={20}
+                    gridMax={400}
+                    data={dados}
                     svg={{ stroke: 'rgb(134, 65, 244)' }}
-                    contentInset={{ top: 20, bottom: 20 }}
-                >
+                    contentInset={{ top: 20, bottom: 20 }}>
                     <Grid />
                 </LineChart>
             </View>
@@ -173,9 +177,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: "column",
-        paddingTop: 40,
-        marginBottom: -10,
-        flex: 1
     },
     textInput: { 
         marginTop: 20,
