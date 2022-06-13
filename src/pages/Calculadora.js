@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity, BackHandler } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts';
+import axios from 'axios';
 
 
 export default function Calculadora(){
@@ -22,18 +23,9 @@ export default function Calculadora(){
         setInput(novoValor)
     }
 
-    function executaEnviar(key){
-        let getGraficoApiAsync = async () => {
-            try {
-              const response = await get(
-                'http://apicalculo.angelo-josejos1.repl.co'
-              );
-              const json = await response.json();
-              console.log(json);
-            } catch (error) {
-              console.error(error);
-            }
-        };
+    async function executaEnviar(){
+        let _input = input;
+        let response = await axios.post(`http://127.0.0.1:5000/montaGrafico?formula=${_input}`)
     }
 
     function executaApagar(){
