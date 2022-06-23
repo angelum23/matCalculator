@@ -6,7 +6,8 @@ import axios from 'axios';
 
 
 export default function Calculadora(){
-    const dados = [-12, 10, 95, 48, 24, -9, -61, 12, 33, 0, 24, 20, 50]
+    const [dadosX, setDadosX] = useState([-12, 10, 95, 48, 24, -9, -61, 12, 33, 0, 24, 20, 50])
+    const [dadosY, setDadosY] = useState([-12, 10, 95, 48, 24, -9, -61, 12, 33, 0, 24, 20, 50])
     const [graph, setGraph] = useState(''); //setGra
     const [input, setInput] = useState(''); //valores bind
 
@@ -25,7 +26,15 @@ export default function Calculadora(){
 
     async function executaEnviar(){
         let _input = input;
-        let response = await axios.post(`http://127.0.0.1:5000/montaGrafico?formula=${_input}`)
+        const { data } = await axios.post(`http://127.0.0.1:5000/montaGrafico?formula=${_input}`);
+        console.log(data);
+        if(typeof data == 'number') {
+            setInput(data);
+            return;
+        }
+
+        setDadosX(data.x);
+        setDadosY(data.y);
     }
 
     function executaApagar(){
@@ -45,7 +54,7 @@ export default function Calculadora(){
             <View style={{flexDirection: 'row'}}>
                 <YAxis
                     style={{marginBottom: 29, marginRight: 5}}
-                    data={dados}
+                    data={dadosY}
                     svg={{
                         fill: 'grey',
                         fontSize: 20,
@@ -56,7 +65,7 @@ export default function Calculadora(){
                     style={styles.lineChart}
                     gridMin={-100}
                     gridMax={100}
-                    data={dados}
+                    data={dadosY}
                     svg={{ stroke: 'rgb(134, 65, 244)', }}
                     numberOfTicks = {1}
                     >
