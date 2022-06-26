@@ -6,10 +6,9 @@ import axios from 'axios';
 
 
 export default function Calculadora(){
-    const [dadosX, setDadosX] = useState([-12, 10, 95, 48, 24, -9, -61, 12, 33, 0, 24, 20, 50])
-    const [dadosY, setDadosY] = useState([-12, 10, 95, 48, 24, -9, -61, 12, 33, 0, 24, 20, 50])
-    const [graph, setGraph] = useState(''); //setGra
-    const [input, setInput] = useState(''); //valores bind
+    const [dadosX, setDadosX] = useState([])
+    const [dadosY, setDadosY] = useState([])
+    const [input, setInput] = useState('');
 
     function executaClique(key){
         let novoValor = input,
@@ -27,12 +26,13 @@ export default function Calculadora(){
     async function executaEnviar(){
         let _input = input;
         const { data } = await axios.post(`http://127.0.0.1:5000/montaGrafico?formula=${_input}`);
-        console.log(data);
         if(typeof data == 'number') {
             setInput(data);
             return;
         }
-
+        if(typeof data == 'string') {
+            return setInput(data);
+        }
         setDadosX(data.x);
         setDadosY(data.y);
     }
@@ -44,15 +44,12 @@ export default function Calculadora(){
 
         setInput(_input);
     }
-    function executaApagarTudo(){
-        setInput('')
-    }
 
     return(
         <View style={styles.container}>
 
-            <View style={{flexDirection: 'row'}}>
-                <YAxis
+            {/* <View style={{flexDirection: 'row'}}> */}
+                {/* <YAxis
                     style={{marginBottom: 29, marginRight: 5}}
                     data={dadosY}
                     svg={{
@@ -60,7 +57,7 @@ export default function Calculadora(){
                         fontSize: 20,
                     }}
                     numberOfTicks={1}
-                />
+                /> */}
                 <LineChart
                     style={styles.lineChart}
                     gridMin={-100}
@@ -68,21 +65,22 @@ export default function Calculadora(){
                     data={dadosY}
                     svg={{ stroke: 'rgb(134, 65, 244)', }}
                     numberOfTicks = {1}
+                    // contentInset={{ top: 20, bottom: 20 }}
                     >
-                    <Grid direction='HORIZONTAL'/>
-                    <Grid direction='VERTICAL'/>
+                    <Grid /* direction='HORIZONTAL' *//>
+                    {/* <Grid direction='VERTICAL'/> */}
                 </LineChart>
-            </View>
+                {/* <XAxis
+                    style= {{}}
+                    data={dadosX}
+                    svg={{
+                        fill: 'grey',
+                        fontSize: 20
+                    }}
+                    numberOfTicks={1}
+                /> */}
+            {/* </View> */}
 
-            <XAxis
-                style= {{}}
-                data={[0]}
-                svg={{
-                    fill: 'grey',
-                    fontSize: 20
-                }}
-                numberOfTicks={1}
-            />
 
 
         
@@ -107,8 +105,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>3</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaApagarTudo('')}>
-                    <Text style={styles.buttonText}>CE</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaApagar('')}>
+                    <Text style={styles.buttonText}>C</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -125,8 +123,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>6</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaApagar('')}>
-                    <Text style={styles.buttonText}>C</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique('/')}>
+                    <Text style={styles.buttonText}>/</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -143,8 +141,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>9</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique('/')}>
-                    <Text style={styles.buttonText}>/</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique('*')}>
+                    <Text style={styles.buttonText}>*</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -161,8 +159,8 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>0</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique('*')}>
-                    <Text style={styles.buttonText}>*</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique('-')}>
+                    <Text style={styles.buttonText}>-</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -175,25 +173,14 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>,</Text>
                     </TouchableOpacity>
                     
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique('=')}>
+                    <TouchableOpacity style={styles.button} onPress={() => executaEnviar('x')}>
                     <Text style={styles.buttonText}>=</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique('-')}>
-                    <Text style={styles.buttonText}>-</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={styles.linha}>
-                    <TouchableOpacity style={styles.buttonEnviar} onPress={() => executaEnviar('x')}>
-                    <Text style={styles.buttonText}>Enviar</Text>
-                    </TouchableOpacity>
-                    
                     <TouchableOpacity style={styles.button} onPress={() => executaClique('+')}>
                     <Text style={styles.buttonText}>+</Text>
                     </TouchableOpacity>
-                </View>
-                
+                </View>                
                 <View style={{flex:1}}></View>
             </View>
         </View>
@@ -211,33 +198,21 @@ const styles = StyleSheet.create({
     },
     textInput: { 
         marginTop: 20,
-        marginBottom: 5,
+        marginBottom: 10,
         backgroundColor: '#b2b6ce', 
         borderRadius: 50, 
         padding: 15, 
-        width: '95%',
-        multiline: false
+        width: '95%'
     },
     button: {
         marginRight: 6,
-        marginTop: 2,
-        marginBottom: 3,
-        height: 50,
+        marginTop: 3,
+        marginBottom: 5,
+        height: 55,
         backgroundColor: '#b2b6ce',
         borderRadius: 15,
         justifyContent: 'center',
         width: '23.5%'
-    },
-
-    buttonEnviar: {
-        marginRight: 6,
-        marginTop: 2,
-        marginBottom: 3,
-        width: '73.5%',
-        height: 50,
-        backgroundColor: '#b2b6ce',
-        borderRadius: 15,
-        justifyContent: 'center',
     },
 
     buttonText: {
@@ -270,7 +245,7 @@ const styles = StyleSheet.create({
     lineChart: 
     {
         height: 220,
-        width: 200,
-        backgroundColor: '#EEEEEE'
+        width: 300,
+        // backgroundColor: '#EEEEEE'
     }
 });

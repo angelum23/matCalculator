@@ -6,12 +6,10 @@ export default function Home({navigation}) {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Calculadora')}>
-                {/* <Calc name="calc" size={30} color="black"></Calc> */}
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Calculadora</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profiles')}>
-                {/* <Calc name="calc" size={30} color="black"></Calc> */}
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Perfil</Text>
             </TouchableOpacity>
         </View>

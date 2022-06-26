@@ -6,25 +6,25 @@ export default function Home({navigation}) {
     return (
       <View style={styles.container}>
             <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile', {
-                Nome: 'Ângelo', Idade: '19 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../assets/maromba.jpg'
+                Nome: 'Ângelo J. da Rosa', Resto: ['19 Anos', 'Cocal do Sul - SC'], Foto: require('../../assets/angelo.jpeg')
                 })}>
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Angelo</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.ident1}  onPress={() => navigation.navigate('Profile', {
-                Nome: 'Gabriela', Idade: '17 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../assets/maromba.jpg'   
+                Nome: 'Gabriela de O. Gava', Resto: ['18 Anos', 'Nova Veneza - SC'], Foto: require('../../assets/gabriela.jpeg')   
                 })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Gabriela</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile',  {
-                Nome: 'Samuel', Idade: '19 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../assets/maromba.jpg'  
+                Nome: 'Samuel Souza Corrêa', Resto: ['20 Anos', 'Criciuma - SC', 'Procuro emprego'], Foto: require('../../assets/samuel.jpeg') 
                 })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Samuel</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.ident1} onPress={() => navigation.navigate('Profile', {
-                Nome: 'Vinicius', Idade: '18 Anos', Curso: 'Engenharia de software', Honors: ['Honors:'], Foto: '../../assets/maromba.jpg'    
+                Nome: 'Vinicius', Resto: ['18 Anos', 'Criciuma - SC'], Foto: require('../../assets/vinicius.jpeg')   
                 })} >
                 <Text style={{ fontSize: 20,fontWeight: 'bold' }}>Vinicius</Text>
             </TouchableOpacity>

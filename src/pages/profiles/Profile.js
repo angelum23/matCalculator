@@ -2,22 +2,21 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default function Profile({ route, navigation }) {
-    const { Nome, Idade, Curso, Honors, Foto } = route.params;
+    const { Nome, Resto, Foto } = route.params;
 
     return (
         <View style={styles.container}>
 
-            {/* <Image
+            <Image
                 style={styles.image}
-                source={require({Foto})}
-            /> */}
-            <Text style={[styles.headline]}>{"\n"}{Nome}</Text>
-            <Text style={[styles.headline]}>{Idade}</Text>
-            <Text style={[styles.headline]}>{Curso}{"\n"} </Text>
+                source={Foto}
+            />
 
             <View style={[styles.views, styles.ident1]}>
-                <Text style={{ fontSize: 20,fontWeight: 'bold', textAlign: 'center' }}>{Honors[0]}</Text>
-            </View>
+                <Text style={[styles.desc]}>{Resto[0]}</Text>
+                <Text style={[styles.desc]}>{Resto[1]}</Text>
+                <Text style={[styles.desc]}>{Resto[2]}</Text>
+             </View>
         </View>
     )
 };
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     headline: {
-        fontSize: 20,
+        fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center'
     },
@@ -42,6 +41,12 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         alignItems: "center",
         justifyContent: "center",
+    },
+
+    desc: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
 
     image: {
