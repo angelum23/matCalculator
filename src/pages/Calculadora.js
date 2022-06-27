@@ -9,10 +9,11 @@ export default function Calculadora(){
     const [dadosX, setDadosX] = useState([])
     const [dadosY, setDadosY] = useState([])
     const [input, setInput] = useState('');
+    const [exibeZero, setExibe] = useState(0);
 
     function executaClique(key){
-        let novoValor = input,
-            ehQuadrado = input.slice(-1) == 'x' && key == 'x';
+        let novoValor = input.toString(),
+            ehQuadrado = novoValor.slice(-1) == 'x' && key == 'x';
 
         if (typeof key == 'number') {
             novoValor += key.toString();
@@ -35,10 +36,11 @@ export default function Calculadora(){
         }
         setDadosX(data.x);
         setDadosY(data.y);
+        setExibe(1);
     }
 
     function executaApagar(){
-        let _input = input;
+        let _input = input.toString();
 
         _input = _input.slice(0,-1)
 
@@ -48,41 +50,23 @@ export default function Calculadora(){
     return(
         <View style={styles.container}>
 
-            {/* <View style={{flexDirection: 'row'}}> */}
-                {/* <YAxis
-                    style={{marginBottom: 29, marginRight: 5}}
-                    data={dadosY}
-                    svg={{
-                        fill: 'grey',
-                        fontSize: 20,
-                    }}
-                    numberOfTicks={1}
-                /> */}
+            <View style={{flexDirection: 'column'}}>
+                {exibeZero ? (
+                    <Text style={{width: 300, alignItems: 'center', textAlign: 'center', color: 'gray'}}>0</Text>
+                ):<Text></Text>}
+                {exibeZero ? (
+                    <View style={styles.line}></View>
+                ):<Text></Text>}
                 <LineChart
                     style={styles.lineChart}
-                    gridMin={-100}
-                    gridMax={100}
                     data={dadosY}
                     svg={{ stroke: 'rgb(134, 65, 244)', }}
                     numberOfTicks = {1}
-                    // contentInset={{ top: 20, bottom: 20 }}
+                    contentInset={{ top: 20, bottom: 20 }}
                     >
-                    <Grid /* direction='HORIZONTAL' *//>
-                    {/* <Grid direction='VERTICAL'/> */}
+                    <Grid/>
                 </LineChart>
-                {/* <XAxis
-                    style= {{}}
-                    data={dadosX}
-                    svg={{
-                        fill: 'grey',
-                        fontSize: 20
-                    }}
-                    numberOfTicks={1}
-                /> */}
-            {/* </View> */}
-
-
-
+                </View>
         
             <View style={styles.ident1}>
                 <TextInput
@@ -229,7 +213,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#646381',
         shadowColor: 'black',
         borderRadius: 10,
-        height: 420,
+        height: 400,
         shadowOpacity: 0.2,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 2},
@@ -242,10 +226,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         minWidth: '90%'
     },
+    line: {
+        marginTop: 20,
+        height: 200,
+        width: 1,
+        color: 'lightgray',
+        backgroundColor: 'lightgray',
+        position: 'absolute',
+        alignSelf:'center'
+    },
     lineChart: 
     {
         height: 220,
         width: 300,
-        // backgroundColor: '#EEEEEE'
+        color: 'gray'
     }
 });
