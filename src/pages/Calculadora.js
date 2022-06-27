@@ -153,7 +153,7 @@ export default function Calculadora(){
                     <Text style={styles.buttonText}>x⁽²⁾</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => executaClique(',')}>
+                    <TouchableOpacity style={styles.button} onPress={() => executaClique('.')}>
                     <Text style={styles.buttonText}>,</Text>
                     </TouchableOpacity>
                     
@@ -192,11 +192,11 @@ const styles = StyleSheet.create({
         marginRight: 6,
         marginTop: 3,
         marginBottom: 5,
-        height: 55,
+        height: 53,
         backgroundColor: '#b2b6ce',
         borderRadius: 15,
         justifyContent: 'center',
-        width: '23.5%'
+        width: 82
     },
 
     buttonText: {
@@ -224,7 +224,11 @@ const styles = StyleSheet.create({
 
     linha: {
         flexDirection: 'row',
-        minWidth: '90%'
+        minWidth: '90%',
+        maxWidth: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
     },
     line: {
         marginTop: 20,
